@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<module>
+    <name>outStockProduct</name>
+    <displayName><![CDATA[Out Of Stock Product]]></displayName>
+    <version><![CDATA[1.0]]></version>
+    <description><![CDATA[Add a message when some product is out of stock.]]></description>
+    <author><![CDATA[Hoando]]></author>
+    <tab><![CDATA[]]></tab>
+    <is_configurable>0</is_configurable>
+    <need_instance>1</need_instance>
+	<limited_countries></limited_countries>
+</module>
