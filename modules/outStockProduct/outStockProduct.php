@@ -8,8 +8,6 @@ use PrestaShop\PrestaShop\Core\Module\WidgetInterface;
 
 class outStockProduct extends Module implements WidgetInterface
 {
-    // const OUT_OF_STOCK_PRODUCT_MODULE = 'blockoutstockproduct';
-
     private $templateFile;
 
     public function __construct()
@@ -29,35 +27,16 @@ class outStockProduct extends Module implements WidgetInterface
         $this->templateFile = 'module:outStockProduct/views/templates/hook/out_stock_product.tpl';
     }
 
-    // public function install()
-    // {
-    //     if (Module::isInstalled(self::OUT_OF_STOCK_PRODUCT_MODULE)) {
-    //         $oldModule = Module::getInstanceByName(self::OUT_OF_STOCK_PRODUCT_MODULE);
-    //         if ($oldModule) {
-    //             $oldModule->uninstall();
-    //         }
-    //     }
-
-    //     return parent::install();
-    // }
-
-    // public function uninstall()
-    // {
-    //     return parent::uninstall();
-    // }
-
     public function renderWidget($hookName = null, array $configuration = [])
     {
-        $this->smarty->assign($this->getWidgetVariables($hookName, $configuration));
-        return $this->fetch($this->templateFile);
+        if(!empty($configuration['product']) && $configuration['product']['quantity'] <= 0) {
+            return $this->fetch($this->templateFile);
+        }
     }
 
     public function getWidgetVariables($hookName = null, array $configuration = [])
     {
-        $product = $configuration['product'];
-        return [
-            'product' => $product
-        ];
+
     }
 
 
